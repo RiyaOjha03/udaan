@@ -1,0 +1,25 @@
+{
+  "retrieved_date": "2026-10-07",
+  "provider": "USGS NWIS via Water Quality Portal",
+  "license_note": "Public data service; check source terms and record-level qualifiers before republication.",
+  "datasets": [
+    {
+      "file": "wqp_uranium_all.csv",
+      "endpoint": "https://www.waterqualitydata.us/data/Result/search?characteristicName=Uranium&mimeType=csv&zip=no&providers=NWIS",
+      "role": "Raw result records for the existing empirical uranium reference baseline"
+    },
+    {
+      "file": "wqp_uranium_stations.csv",
+      "endpoint": "https://www.waterqualitydata.us/data/Station/search?characteristicName=Uranium&mimeType=csv&zip=no&providers=NWIS",
+      "role": "Station coordinates and reported location/well/aquifer metadata"
+    }
+  ],
+  "processing": {
+    "observation_file": "../processed/usgs_groundwater_uranium.csv",
+    "filter": "ActivityMediaName=Water; ActivityMediaSubdivisionName=Groundwater; characteristic Uranium; nonnegative numeric ResultMeasureValue; reported unit µg/L",
+    "retained_fields": ["date", "site", "uranium_ug_l", "qualifier"],
+    "record_count": 9631,
+    "unique_sites": 7684,
+    "limitations": ["Repeated site records are not independent experimental samples.", "Methods, qualifiers, detection limits, periods, and aquifers vary.", "Station coordinates do not establish groundwater flow direction or ISR connectivity."]
+  }
+}

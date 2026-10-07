@@ -1,0 +1,64 @@
+{
+  "status": "descriptive_completeness_not_risk",
+  "overall_completeness_score_percent": 37,
+  "components": {
+    "chemistry": 0.111,
+    "spatial_coordinates": 1.0,
+    "hydrogeology": 0.485,
+    "temporal": 0.165
+  },
+  "score_definition": "Coverage rubric only: chemistry 40%, spatial coordinates 20%, hydrogeology metadata 20%, temporal span/repeated-site sampling 20%. Missingness is not a vulnerability score; repeated national records are not ISR phase coverage.",
+  "n_records": 9631,
+  "data_gaps": [
+    {
+      "gap": "co-sampled multianalyte chemistry",
+      "coverage_fraction": 0.111,
+      "why_it_matters": "The baseline extract contains uranium only; multivariate anomaly analysis and co-contaminant interpretation are unsupported.",
+      "suggested_action": "Run the documented multi-parameter WQP downloader and verify shared activity identifiers."
+    },
+    {
+      "gap": "hydraulic head, gradient, and flow direction",
+      "coverage_fraction": 0.0,
+      "why_it_matters": "Coordinates alone do not identify upgradient/downgradient connectivity.",
+      "suggested_action": "Obtain contemporaneous water-level elevations from a hydrogeologist and derive gradient only within a defensible connected aquifer."
+    },
+    {
+      "gap": "well screen, aquifer/geology, site baseline and ISR-zone geometry",
+      "coverage_fraction": 0.485,
+      "why_it_matters": "Optional station attributes are incomplete and do not provide screen intervals, site baseline phases, or connected ISR geometry.",
+      "suggested_action": "Add verified well construction, aquifer framework, repeated baseline data, and user-supplied hypothetical ISR polygon; preserve scenario labels."
+    },
+    {
+      "gap": "phase-linked temporal baseline",
+      "coverage_fraction": 0.165,
+      "why_it_matters": "Repeated national observations do not establish matched pre-operation, operation, and restoration sampling at one ISR site.",
+      "suggested_action": "Acquire repeated site-specific measurements with documented phase, method, and detection limits."
+    }
+  ],
+  "monitoring_recommendations": [
+    {
+      "priority": 1,
+      "recommendation": "Run the documented multi-parameter WQP downloader and verify shared activity identifiers.",
+      "basis": "co-sampled multianalyte chemistry",
+      "label": "AI-assisted monitoring recommendations for research and decision support; not a regulatory requirement."
+    },
+    {
+      "priority": 2,
+      "recommendation": "Obtain contemporaneous water-level elevations from a hydrogeologist and derive gradient only within a defensible connected aquifer.",
+      "basis": "hydraulic head, gradient, and flow direction",
+      "label": "AI-assisted monitoring recommendations for research and decision support; not a regulatory requirement."
+    },
+    {
+      "priority": 3,
+      "recommendation": "Add verified well construction, aquifer framework, repeated baseline data, and user-supplied hypothetical ISR polygon; preserve scenario labels.",
+      "basis": "well screen, aquifer/geology, site baseline and ISR-zone geometry",
+      "label": "AI-assisted monitoring recommendations for research and decision support; not a regulatory requirement."
+    },
+    {
+      "priority": 4,
+      "recommendation": "Acquire repeated site-specific measurements with documented phase, method, and detection limits.",
+      "basis": "phase-linked temporal baseline",
+      "label": "AI-assisted monitoring recommendations for research and decision support; not a regulatory requirement."
+    }
+  ]
+}

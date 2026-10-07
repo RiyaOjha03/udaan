@@ -1,0 +1,4 @@
+{
+  "status": "not_fit",
+  "reason": "No multivariate cleaned records. Run data_download.py and data_cleaning.py; uranium-only records do not support a multivariate vulnerability model."
+}

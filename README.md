@@ -16,7 +16,7 @@ The repository includes `.github/workflows/pages.yml`. After the extracted proje
 
 To upload the ZIP: extract it, create a new GitHub repository, and upload the extracted project files and folders (including the hidden `.github` folder), or use Git with the commands shown below:
 
-`git init -b main` → `git add .` → `git commit -m "Add groundwater ISR decision support project"` → `git remote add origin https://github.com/YOUR-USERNAME/YOUR-REPOSITORY.git` → `git push -u origin main`
+`git init -b main` → `git add .` → `git commit -m "Add groundwater ISR decision support project"` → `git remote add origin https://github.com/RiyaOjha03/udaan.git` → `git push -u origin main`
 
 Uploading the ZIP file itself to GitHub does not unpack it into a deployable repository; extract it first. The ZIP excludes virtual environments, Python bytecode, incomplete download chunks, and local binary model pickle files. Source CSVs and generated GIS outputs are included.
 
@@ -24,7 +24,7 @@ Uploading the ZIP file itself to GitHub does not unpack it into a deployable rep
 
 Use Python 3.10+ in a virtual environment.
 
-```powershell
+```bash
 python -m venv .venv
 .venv\Scripts\Activate.ps1
 pip install -r requirements.txt
@@ -54,8 +54,8 @@ The state argument is optional; it accepts a two-digit FIPS code to limit query 
 
 ## Data and provenance
 
-- Baseline uranium results: [WQP NWIS result service](https://www.waterqualitydata.us/data/Result/search?characteristicName=Uranium&mimeType=csv&zip=no&providers=NWIS), queried for uranium and filtered to `Water / Groundwater`, numeric nonnegative values reported in µg/L. Raw and filtered records are preserved in `data/raw/` and `data/processed/`.
-- Station metadata: [WQP NWIS station service](https://www.waterqualitydata.us/data/Station/search?characteristicName=Uranium&mimeType=csv&zip=no&providers=NWIS), including site type, coordinates, and optional aquifer/well attributes. Missing attributes remain missing.
+- Baseline uranium results: [WQP NWIS result service](https://www.waterqualitydata.us/data/Result/search?characteristicName=Uranium\&mimeType=csv\&zip=no\&providers=NWIS), queried for uranium and filtered to `Water / Groundwater`, numeric nonnegative values reported in µg/L. Raw and filtered records are preserved in `data/raw/` and `data/processed/`.
+- Station metadata: [WQP NWIS station service](https://www.waterqualitydata.us/data/Station/search?characteristicName=Uranium\&mimeType=csv\&zip=no\&providers=NWIS), including site type, coordinates, and optional aquifer/well attributes. Missing attributes remain missing.
 - Multivariate research query: see `src/data_download.py` and the generated `data/raw/wqp_manifest.json`. Parameter codes are recorded there. A multi-parameter query does not guarantee same-activity co-sampling; `data_cleaning.py` joins only measurements sharing activity, site, and sample date.
 - The baseline extract contains 9,631 numeric groundwater uranium measurements and 7,684 sites at the current recorded retrieval. These are source records, not independent samples in a designed experiment.
 
@@ -76,22 +76,22 @@ The map exports observed site summaries to GeoJSON and CSV. It distinguishes obs
 ## Project layout
 
 ```text
-index.html                 Browser decision-support dashboard
-screening.html             Preserved original screening/reference module
-train_model.py             Existing empirical uranium reference builder
-src/data_download.py       WQP result and station ingestion
-src/data_cleaning.py       Quality checks, unit normalization, sample pivot
-src/feature_engineering.py Time-safe chemistry features and spatial groups
-src/train_models.py        Guarded unsupervised anomaly model
-src/spatial_validation.py  Coordinate-block score stability (no labels)
-src/explainability.py      Score ablation + optional Kernel SHAP for raw anomaly score
-src/vulnerability_mapping.py GIS export/map of observed uranium sites
-src/data_gap_analysis.py   Coverage score and research monitoring suggestions
-src/build_dashboard.py     Embed current generated status into dashboard
-data/                      Provenance, raw and processed observations
-models/                    Model artifact and model status
-outputs/                   Metrics, maps, figures and reports
-docs/methodology.md         Research-style methods and limitations
+index.html                    Browser decision-support dashboard
+screening.html                Preserved original screening/reference module
+train_model.py                Existing empirical uranium reference builder
+src/data_download.py          WQP result and station ingestion
+src/data_cleaning.py          Quality checks, unit normalization, sample pivot
+src/feature_engineering.py    Time-safe chemistry features and spatial groups
+src/train_models.py           Guarded unsupervised anomaly model
+src/spatial_validation.py     Coordinate-block score stability (no labels)
+src/explainability.py         Score ablation + optional Kernel SHAP for raw anomaly score
+src/vulnerability_mapping.py  GIS export/map of observed uranium sites
+src/data_gap_analysis.py      Coverage score and research monitoring suggestions
+src/build_dashboard.py        Embed current generated status into dashboard
+data/                         Provenance, raw and processed observations
+models/                       Model artifact and model status
+outputs/                      Metrics, maps, figures and reports
+docs/methodology.md           Research-style methods and limitations
 ```
 
 ## Literature review and references
@@ -102,7 +102,7 @@ docs/methodology.md         Research-style methods and limitations
 4. EPA. (2017). *Aquifer Restoration after Uranium Recovery: Evaluation of Aquifer Restoration at Sample Uranium In-Situ Recovery Sites*. EPA/600/F-17/342. [Technical brief](https://www.epa.gov/research/aquifer-restoration-after-uranium-recovery-evaluation-aquifer-restoration-sample).
 5. EPA. (2014). *Ground Water Modeling Studies at In Situ Leaching Facilities and Evaluation of Doses and Risks to Offsite Receptors from Contaminated Ground Water*. EPA-402-F-13-051. [Appendix D](https://www.epa.gov/sites/default/files/2015-05/documents/EPA-402-F-13-051b.pdf).
 6. Gao, Y. et al. (2022). A critical review on the occurrence and distribution of uranium- and thorium-decay nuclides and their effect on groundwater quality. *Science of the Total Environment*, 808, 151914. [doi:10.1016/j.scitotenv.2021.151914](https://doi.org/10.1016/j.scitotenv.2021.151914).
-7. Loaiciga, H. A. et al. (1992). Review of groundwater quality monitoring network design. *Journal of Hydraulic Engineering*, 118(1), 11–37. [doi:10.1061/(ASCE)0733-9429(1992)118:1(11)](https://doi.org/10.1061/(ASCE)0733-9429(1992)118:1(11)).
+7. Loaiciga, H. A. et al. (1992). Review of groundwater quality monitoring network design. *Journal of Hydraulic Engineering*, 118(1), 11–37. [doi:10.1061/(ASCE)0733-9429(1992)118:1(11)](https://doi.org/10.1061/\(ASCE\)0733-9429\(1992\)118:1\(11\)).
 8. Lundberg, S. M. & Lee, S.-I. (2017). A unified approach to interpreting model predictions. *NeurIPS 30*. [Proceedings](https://proceedings.neurips.cc/paper/7062-a-unified-approach-tointerpreting-model-predictions).
 9. Yang, J. et al. (2025). Advancing groundwater vulnerability assessment to nitrate contamination: index-based, statistical, and ML approaches. *Journal of Hydrology*, 663, 134189. [doi:10.1016/j.jhydrol.2025.134189](https://doi.org/10.1016/j.jhydrol.2025.134189).
 10. *Machine Learning Models of the Geospatial Distribution of Groundwater Quality: A Systematic Review* (2025). *Water*, 17(19), 2861. [doi:10.3390/w17192861](https://doi.org/10.3390/w17192861).
